@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        form {
+            margin: 0 auto;
+            width: 250px;
+            margin-top: 50px;
+            background-color: #3cd8ec;
+            padding: 20px 0 20px 30px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 8px rgb(114, 114, 114);
+        }
+
+        form input {
+            margin: 3px 0px 8px 0px;
+            padding: 3px 20px;
+            border-radius: 5px;
+        }
+
+        form input:hover {
+            background-color: #f8e4e4;
+        }
+
+        form label {
+            font-size: 18px;
+        }
+
+        .btn {
+            padding: 6px 18px;
+            font-weight: 600;
+            margin-left: 15px;
+            margin-top: 15px;
+            border: none;
+        }
+
+        .btn:hover {
+            background-color: #eba4a4;
+            color: aliceblue;
+
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <form action="#" name="login">
+            <h2 style="text-align: center; margin-top: -4px;">Login Form</h2>
+            <label for="">Name:</label><br>
+            <input type="text" name="name"><br>
+            <label for="">Email:</label><br>
+            <input type="email" name="email" id="myEmail" onblur="checkEmail()"><br>
+            <label for="">Password:</label><br>
+            <input type="password" name="password" id="myPassword" onblur="checkPassword()"><br>
+            <label for="">Gender:</label>
+            <input type="radio" name="gender" id="" value="Male">
+            <label for="">Male</label>
+            <input type="radio" name="gender" id="" value="Female">
+            <label for="">Female</label><br>
+            <label for="">Education:</label>
+            <input type="checkbox" name="education" id="" value="MBA">
+            <label for="">MBA</label>
+            <input type="checkbox" name="education" id="" value="BBA">
+            <label for="">BBA</label>
+            <input type="checkbox" name="education" id="" value="BSc">
+            <label for="">BSc</label><br>
+            <input class="btn" type="submit" value="Submit" onclick="myFunction()">
+            <input class="btn" type="reset" value="Reset">
+        </form>
+    </section>
+    <script>
+        // Email Validation 
+        function checkEmail() {
+            const email = document.getElementById('myEmail');
+            const emailNaN = /^[^ ]+@[^ ]+\.[a-z]{2,6}$/;
+            if (!emailNaN.test(email.value)) {
+                alert("Please Enter Valid Email.");
+                document.getElementById('myEmail').style.borderColor = 'red';
+                return false;
+            }
+            else {
+                document.getElementById('myEmail').style.borderColor = 'green';
+                return true;
+            }
+        }
+
+        // Password Validation
+        function checkPassword() {
+            const password = document.getElementById('myPassword');
+            const passwordNaN = /^[^ ]{5,100}$/;
+            if (!passwordNaN.test(password.value)) {
+                alert("Please Enter Valid Password.");
+                document.getElementById('myPassword').style.borderColor = 'red';
+                return false;
+            }
+            else {
+                document.getElementById('myPassword').style.borderColor = 'green';
+                return true;
+            }
+        }
+
+        // main function
+        function myFunction() {
+            const txtName = document.login.name.value;
+            const txtEmail = document.login.email.value;
+            const txtPassword = document.login.password.value;
+
+            // Checked Gender
+            let txtGender = '';
+            for (i = 0; i < document.login.gender.length; i++) {
+                if (document.login.gender[i].checked) {
+                    txtGender = document.login.gender[i].value;
+                }
+            }
+
+            // Open new Window 
+            if (txtName && txtEmail) {
+                const doc = open('', '', 'width = 400px, height=500px');
+
+                with (doc.document) {
+                    write("Name: " + txtName + '<br> <br>')
+                    write("Email: " + txtEmail + '<br> <br>')
+                    write("Password: " + txtPassword + '<br> <br>')
+                    write("Gender: " + txtGender + '<br> <br>')
+                }
+            }
+            else{
+                alert("Please fill minimum requirment");
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>
