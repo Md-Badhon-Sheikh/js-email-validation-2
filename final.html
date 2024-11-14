@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        form {
+            width: 250px;
+            margin: 0 auto;
+            padding: 20px 1px 20px 30px;
+            margin-top: 50px;
+            background-color: #40cae2;
+            box-shadow: 5px 6px 5px rgb(163, 162, 162);
+            border-radius: 10px;
+        }
+
+        form input {
+            padding: 3px 20px;
+            border-radius: 5px;
+            margin: 3px 0 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <form action="#" name="login">
+            <h2 style="margin-top: -5px; text-align: center;">Login form</h2>
+            <label for="">Name:</label><br>
+            <input type="text" name="name"><br>
+            <label for="">Email:</label><br>
+            <input type="email" name="email" id="myEmail" onblur="checkEmail()"><br>
+            <label for="">Password:</label><br>
+            <input type="password" name="password" id="myPassword" onblur="checkPassword()"><br>
+            <label for="">Gender:</label>
+            <input type="radio" name="gender" id="" value="Male">
+            <label for="">Male</label>
+            <input type="radio" name="gender" id="" value="Female">
+            <label for="">Female</label><br>
+            <label for="">Education:</label>
+            <input type="checkbox" name="education" id="" value="MBA">
+            <label for="">MBA</label>
+            <input type="checkbox" name="education" id="" value="BBA">
+            <label for="">BBA</label>
+            <input type="checkbox" name="education" id="" value="BSc">
+            <label for="">BSc</label><br>
+            <input type="submit" value="Submit" onclick="myFunction()">
+            <input type="reset" value="Reset">
+            
+        </form>
+    </section>
+    <script>
+        // Email Validation
+        function checkEmail() {
+            const email = document.getElementById('myEmail');
+            const emailNaN = /^[^ ]+@[^ ]+\.[a-z]{2,4}$/;
+            if (!emailNaN.test(email.value)) {
+                alert("Please enter Valid Email");
+                document.getElementById('myEmail').style.borderColor = 'red';
+                return false;
+            }
+            else {
+                document.getElementById('myEmail').style.borderColor = 'green';
+            }
+            return true;
+        }
+
+        // Password Validation
+        function checkPassword() {
+            const password = document.getElementById('myPassword');
+            const passwordNaN = /^[^ ]{8,100}$/;
+            if (!passwordNaN.test(password.value)) {
+                alert("Please enter Valid Password");
+                document.getElementById('myPassword').style.borderColor = 'red';
+                return false;
+            }
+            else {
+                document.getElementById('myPassword').style.borderColor = 'green';
+                return true;
+            }
+            
+        }
+
+
+
+        // Main Function
+        function myFunction() {
+            const txtName = document.login.name.value;
+            const txtEmail = document.login.email.value;
+            const txtPassword = document.login.password.value;
+
+
+
+            // Gender checked
+            let txtGender = '';
+            for (i = 0; i < document.login.gender.length; i++) {
+                if (document.login.gender[i].checked) {
+                    txtGender = document.login.gender[i].value;
+                }
+            }
+            // Education checked
+            let txtEducation = '';
+            for (i = 0; i < document.login.education.length; i++) {
+                if (document.login.education[i].checked) {
+                    txtEducation += document.login.education[i].value + ' ';
+                }
+            }
+
+            if (txtName && txtEmail) {
+
+                const doc = open('', '', 'width=400px, height=500px');
+
+                with (doc.document) {
+                    write("Name: " + txtName + " <br><br>");
+                    write("Email: " + txtEmail + " <br><br>");
+                    write("Email: " + txtPassword + " <br><br>");
+                    write("Gender: " + txtGender + " <br><br>");
+                    write("Education: " + txtEducation + " <br><br>");
+                    write("<input type='button' value='Clear' onclick='self.clear()'>" + "  ")
+                    write("<input type='button' value='Clear' onclick='self.print()'>")
+                }
+            }
+            else {
+                alert("Please fill minimum requirment");
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

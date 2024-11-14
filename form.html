@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <section>
+        <h2>Login Form</h2>
+        <form action="#" name="login">
+            <label for="">Name:</label><br>
+            <input type="text" name="name"><br>
+            <label for="">Email:</label><br>
+            <input type="email" name="myEmail" id="myEmail" onblur="checkEmail()"><br>
+            <label for="">Password:</label><br>
+            <input type="password" name="password" id=""><br>
+            <label for="">Gender:</label>
+            <input type="radio" name="sex" id="" value="Male">
+            <label for="">Male</label>
+            <input type="radio" name="sex" id="" value="Female">
+            <label for="">Female</label><br>
+            <label for="">Educations:</label>
+            <input type="checkbox" name="education" id="" value="SSC">
+            <label for="">SSC</label>
+            <input type="checkbox" name="education" id="" value="HSC">
+            <label for="">HSC</label><br>
+            <label for="">Language:</label>
+            <select name="vasha" id="">
+                <option value="Bangla" name="vasha">Bangla</option>
+                <option value="English" name="vasha">English</option>
+                <option value="Hindi" name="vasha">Hindi</option>
+            </select><br>
+            <div>
+                <input class="btn" type="submit" value="Submit" onclick="myFunction()">
+                <input class="btn" type="reset" value="Reset">
+                
+            </div>
+        </form>
+    </section>
+    <script>
+        // email Validation 
+          function checkEmail() {
+            const email = document.getElementById('myEmail');
+            const emailNaN = /^[^ ]+@[^ ]+\.[a-z]{2,4}$/;
+            if (!emailNaN.test(email.value)) {
+                alert("Please Enter Valid Email.");
+                document.getElementById('myEmail').style.borderColor = "#FF0000";
+                return false;
+            }
+            else {
+                document.getElementById('myEmail').style.borderColor = "#228B22";
+            }
+            return true;
+        }
+
+        // main function 
+        function myFunction() {
+            const txtName = document.login.name.value;
+            const txtEmail = document.login.myEmail.value;
+            const txtPassword = document.login.password.value;
+            const txtLanguage = document.login.vasha.value;
+            
+             // password Validation
+             if(txtPassword.length < 6){
+                alert("Password is too short..!!");
+                return;
+            }
+            else if(txtPassword.length >12){
+                alert("Password is too long..!!!");
+                return;
+            }
+           
+            // gender check loop
+            let gender = '';
+            for(i=0; i<document.login.sex.length; i++){
+                if(document.login.sex[i].checked){
+                    gender = document.login.sex[i].value;
+                }
+            }
+
+            // Education checked loop
+            let txtEducation = '';
+            for(i=0; i<document.login.education.length; i++){
+                if(document.login.education[i].checked){
+                    txtEducation += document.login.education[i].value + " ";
+                }
+            }
+            
+     
+            if(txtName && txtEmail){
+                const doc = open('', '', 'width=500px, height=500px');
+
+            with (doc.document) {
+                write("Name:" + txtName + "<br><br>");
+                write("Email:" + txtEmail + "<br><br>");
+                write("Password:" + txtPassword + "<br><br>");
+                write("Gender:" + gender + "<br><br>");
+                write("Education:" + txtEducation + "<br><br>");
+                write("Language:" + txtLanguage + "<br><br>");
+                write("<input type='button' value='Clear' onclick='self.close()'>");
+                write("<input type='button' value='Clear' onclick='self.print()'>");
+               
+            }
+            }
+            else{
+                alert("All field are required");
+                return;
+            }
+            
+
+        }
+    </script>
+</body>
+
+</html>

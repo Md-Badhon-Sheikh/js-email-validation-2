@@ -1,0 +1,45 @@
+section {
+    width: 250px;
+    margin: 0 auto;
+    margin-top: 50px;
+    background-color: #5dade2;
+    padding: 20px 0px 20px 50px;
+    border-radius: 10px;
+    box-shadow: 4px 5px 8px #b7bcc0;
+}
+section h2{
+    padding-left: 30px;
+    margin-top: -5px;
+}
+form input{
+    border: none;
+    padding: 5px 10px ;
+    border-radius: 5px;
+    margin: 5px 0 15px 0;
+}
+form input:hover{
+    background-color: #abebc6;
+}
+form label{
+    font-size: 18px;
+    font-weight: 500;
+}
+form select{
+    border-radius: 5px;
+    padding: 2px 10px;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+div{
+    display: flex;
+    padding-top: 10px;
+    
+}
+.btn{
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 20px;
+    background-color: #f8c8c8;
+
+}
